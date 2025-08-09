@@ -1,5 +1,6 @@
 import pygame
 from random import randint
+import os
 
 #Initialise game
 pygame.init()
@@ -65,20 +66,33 @@ start_text_rect.center=(WINDOW_WIDTH//2 , WINDOW_HEIGHT//2)
 
 
 
+# Get the directory where THIS script is located
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Build the path to the images
+basket_img = os.path.join(script_dir, "assets", "basket.png")
+apple_img = os.path.join(script_dir, "assets", "apple.png")
+banana_img = os.path.join(script_dir, "assets", "banana.png")
+melon_img = os.path.join(script_dir, "assets", "melon.png")
+cake_img = os.path.join(script_dir, "assets", "cake.png")
+strawberry_img = os.path.join(script_dir, "assets", "strawberry.png")
+bg_img = os.path.join(script_dir, "assets", "bg.png")
+pause_img = os.path.join(script_dir, "assets", "pause.png")
+
 #Images
-basket=pygame.image.load("Fruit Drop/assests/basket.png")
+basket=pygame.image.load(basket_img)
 basket_rect=basket.get_rect()
 basket_rect.y=WINDOW_HEIGHT-48
 basket_rect.centerx=WINDOW_WIDTH//2
 
-apple=pygame.image.load("Fruit Drop/assests/apple.png")
-banana=pygame.image.load("Fruit Drop/assests/banana.png")
-melon=pygame.image.load("Fruit Drop/assests/melon.png")
-strawberry=pygame.image.load("Fruit Drop/assests/strawberry.png")
-cake=pygame.image.load("Fruit Drop/assests/cake.png")
-bg=pygame.image.load("Fruit Drop/assests/bg.png")
+apple=pygame.image.load(apple_img)
+banana=pygame.image.load(banana_img)
+melon=pygame.image.load(melon_img)
+strawberry=pygame.image.load(strawberry_img)
+cake=pygame.image.load(cake_img)
+bg=pygame.image.load(bg_img)
 
-pause_game=pygame.image.load("Fruit Drop/assests/pause.png")
+pause_game=pygame.image.load(pause_img)
 pause_game_rect=pause_game.get_rect()
 pause_game_rect.centerx=WINDOW_WIDTH//2
 pause_game_rect.centery=WINDOW_HEIGHT//2-32
@@ -90,9 +104,14 @@ curr_drop_rect.y=70
 choose_drop=0
 curr_drop_speed=APPLE_VELOCITY
 
+
+# Paths to the sfx
+collect_sf = os.path.join(script_dir, "sounds", "collect.wav")
+reduction_sf = os.path.join(script_dir, "sounds", "collect2.wav")
+
 #Sound fx
-collect=pygame.mixer.Sound("Fruit Drop/sounds/collect.wav")
-score_reduction=pygame.mixer.Sound("Fruit Drop/sounds/collect2.wav")
+collect=pygame.mixer.Sound(collect_sf)
+score_reduction=pygame.mixer.Sound(reduction_sf)
 
 #Main game loop
 running=True

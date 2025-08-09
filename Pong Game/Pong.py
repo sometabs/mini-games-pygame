@@ -1,5 +1,6 @@
 import pygame 
 from random import randint
+import os
 
 #Initialise pygame
 pygame.init()
@@ -36,9 +37,14 @@ left_paddle_y=WINDOW_HEIGHT//2-50
 #Font
 font = pygame.font.SysFont('comicsansms', 20)
 
+# Get the directory where THIS script is located
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+score_sf = os.path.join(script_dir, "score.mp3")
+paddle_sf = os.path.join(script_dir, "paddle.mp3")
 #Sound fx
-score_sound=pygame.mixer.Sound("Pong Game/score.mp3")
-paddle_sound=pygame.mixer.Sound("Pong Game/paddle.mp3")
+score_sound=pygame.mixer.Sound(score_sf)
+paddle_sound=pygame.mixer.Sound(paddle_sf)
 
 #Colors
 WHITE = (255, 255, 255)
